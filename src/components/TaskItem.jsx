@@ -1,9 +1,10 @@
+import { useState } from "react";
+
 // styles
 import styles from "./TaskItem.module.css";
 
 // Library imports
-import { CheckIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { CheckIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 function TaskItem({ task }) {
   const [isChecked, setIsChecked] = useState(task.checked);
@@ -29,6 +30,24 @@ function TaskItem({ task }) {
             <CheckIcon strokeWidth={2} width={24} height={24} />
           </p>
         </label>
+      </div>
+
+      <div className={styles["task-group"]}>
+            <button
+            className="btn"
+            aria-label={`Update ${task.name} Task`}
+            // onClick={}
+            >
+                <PencilSquareIcon width={24} height={24} />
+            </button>
+
+            <button
+            className={`btn ${styles.delete}`}
+            aria-label={`Delete ${task.name} Task`}
+            // onClick={}
+            >
+                <TrashIcon width={24} height={24} />
+            </button>
       </div>
     </li>
   );
